@@ -1,7 +1,10 @@
 import greenfoot.*;
 
 public class MyWorld extends World {
+
+    boolean gameLost = false;
     private int time = 0;
+
     public MyWorld() {
         super(600, 400, 1);
         addObject(new Hero(), 300, 200);
