@@ -8,33 +8,36 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Hero extends Actor
 {
-    boolean lostGame = false;
+    
     /**
      * Act - do whatever the Hero wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        if (lostGame == false) {
-            if (Greenfoot.isKeyDown("down"))
-            {   
-                if (lostGame == false) {
-                    setLocation(getX(), getY()+5);
+
+        boolean gameLost = ((MyWorld)getWorld()).gameLost;
+
+        if (Greenfoot.isKeyDown("down"))
+        {   
+            if (gameLost == false) {
+                setLocation(getX(), getY()+5);
+            
                 
-                    
-                }
-            }
-            if (Greenfoot.isKeyDown("up"))
-            {
-                if (lostGame == false) {
-                    setLocation(getX(), getY()-5);
-                
-                }
             }
         }
+        if (Greenfoot.isKeyDown("up"))
+        {
+            if (gameLost == false) {
+                setLocation(getX(), getY()-5);
+            
+            }
+        }
+        
         if (isTouching(Banana.class))
         {
-           lostGame = true;
+           ((MyWorld)getWorld()).gameLost = true;
+           getWorld().removeObject(this);
         }
         
     }

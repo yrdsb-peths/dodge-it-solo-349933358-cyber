@@ -15,10 +15,11 @@ public class Banana extends Actor
     public void act()
     {
         move(-3);
-        if (getX() <= 0)
+        if (getX() <= 0 || ((MyWorld)getWorld()).gameLost == true)
         {
             // setLocation(600, Greenfoot.getRandomNumber(400));
             getWorld().removeObject(this);
+
         }
     }
 }
